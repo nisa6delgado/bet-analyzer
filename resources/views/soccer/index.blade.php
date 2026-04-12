@@ -12,84 +12,52 @@
         </thead>
 
         <tbody class="divide-y divide-slate-700/50">
-            {{-- @foreach($partidos as $partido) --}}
-            <tr class="hover:bg-slate-700/30 transition-all group">
-                <td class="px-6 py-6">
-                    <div class="flex flex-col">
-                        <span class="font-mono text-xl font-bold text-white">15:00</span>
-                        <span class="text-[10px] text-blue-400 font-bold uppercase mt-1">Serie A 🇮🇹</span>
-                    </div>
-                </td>
-                
-                <td class="px-6 py-6">
-                    <div class="flex items-center gap-4">
-                        <div class="flex -space-x-3">
-                            <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="https://api.dicebear.com/7.x/initials/svg?seed=Roma&backgroundColor=731d1d" alt="AS Roma">
-                            <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="https://api.dicebear.com/7.x/initials/svg?seed=Lazio&backgroundColor=87ceeb" alt="Lazio">
+            @foreach($matches as $match)
+                <tr class="hover:bg-slate-700/30 transition-all group">
+                    <td class="px-6 py-6">
+                        <div class="flex flex-col">
+                            <span class="font-mono text-xl font-bold text-white">{{ new DateTime($match->fixture->date)->format('h:ia') }}</span>
+
+                            <span class="flex text-[10px] text-blue-400 font-bold uppercase mt-1">
+                                <img class="h-3 mr-1" src="{{ $match->league->flag ?? $match->league->logo }}" alt="{{ $match->league->name }}">
+
+                                {{ $match->league->name }}
+                            </span>
                         </div>
+                    </td>
+                    
+                    <td class="px-6 py-6">
+                        <div class="flex items-center gap-4">
+                            <div class="flex -space-x-3">
+                                <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="{{ $match->teams->home->logo }}" alt="{{ $match->teams->home->name }}">
+                                <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="{{ $match->teams->away->logo }}" alt="{{ $match->teams->away->name }}">
+                            </div>
 
-                        <div>
-                            <div class="font-bold text-white text-lg leading-tight">AS Roma vs Lazio</div>
-                            <div class="text-xs text-slate-500 font-medium">Derby della Capitale</div>
+                            <div>
+                                <div class="font-bold text-white text-lg leading-tight">{{ $match->teams->home->name }} vs {{ $match->teams->away->name }}</div>
+                            </div>
                         </div>
-                    </div>
-                </td>
+                    </td>
 
-                <td class="px-6 py-6 text-center">
-                    <span class="text-xl font-mono font-black text-emerald-400">68%</span>
-                </td>
+                    <td class="px-6 py-6 text-center">
+                        <span class="text-xl font-mono font-black text-emerald-400">68%</span>
+                    </td>
 
-                <td class="px-6 py-6 text-center">
-                    <span class="text-xl font-mono font-black text-slate-400">51%</span>
-                </td>
+                    <td class="px-6 py-6 text-center">
+                        <span class="text-xl font-mono font-black text-slate-400">51%</span>
+                    </td>
 
-                <td class="px-6 py-6 text-center">
-                    <span class="text-xl font-mono font-black text-emerald-400 text-glow">89%</span>
-                </td>
-                
-                <td class="px-6 py-6 text-center">
-                    <div class="inline-block bg-blue-500/10 text-blue-400 border border-blue-500/30 px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-tighter">
-                        Local (DNB)
-                    </div>
-                </td>
-            </tr>
-
-            <tr class="hover:bg-slate-700/30 transition-all group border-l-4 border-orange-500">
-                <td class="px-6 py-6">
-                    <div class="flex flex-col">
-                        <span class="font-mono text-xl font-bold text-white">19:00</span>
-                        <span class="text-[10px] text-orange-400 font-bold uppercase mt-1">LVBP 🇻🇪</span>
-                    </div>
-                </td>
-                
-                <td class="px-6 py-6">
-                    <div class="flex items-center gap-4">
-                        <div class="flex -space-x-3">
-                            <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800" src="https://api.dicebear.com/7.x/initials/svg?seed=AZ&backgroundColor=ff6b00" alt="Águilas">
-                            <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800" src="https://api.dicebear.com/7.x/initials/svg?seed=LE&backgroundColor=000000" alt="Leones">
+                    <td class="px-6 py-6 text-center">
+                        <span class="text-xl font-mono font-black text-emerald-400 text-glow">89%</span>
+                    </td>
+                    
+                    <td class="px-6 py-6 text-center">
+                        <div class="inline-block bg-blue-500/10 text-blue-400 border border-blue-500/30 px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-tighter">
+                            Local (DNB)
                         </div>
-
-                        <div>
-                            <div class="font-bold text-white text-lg">Águilas vs Leones</div>
-                            <div class="text-xs text-slate-500">Estadio Luis Aparicio</div>
-                        </div>
-                    </div>
-                </td>
-
-                <td class="px-6 py-6 text-center italic text-slate-600">N/A</td>
-                <td class="px-6 py-6 text-center italic text-slate-600">N/A</td>
-                
-                <td class="px-6 py-6 text-center">
-                    <span class="text-xl font-mono font-black text-emerald-400">75%</span>
-                </td>
-                
-                <td class="px-6 py-6 text-center">
-                    <div class="inline-block bg-orange-500/10 text-orange-400 border border-orange-500/30 px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-tighter">
-                        Handicap +1.5
-                    </div>
-                </td>
-            </tr>
-            {{-- @endforeach --}}
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </x-layout>

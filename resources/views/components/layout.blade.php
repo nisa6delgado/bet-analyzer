@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="bg-slate-900 min-h-screen p-4 md:p-8 text-slate-200">
-        <div class="max-w-7xl mx-auto mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="mx-auto mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
                 <h2 class="text-3xl font-extrabold text-white tracking-tighter">Bet Analyzer</h2>
             </div>
@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div class="max-w-7xl mx-auto bg-slate-800 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden">
+        <div class="mx-auto bg-slate-800 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden">
             <div class="overflow-x-auto">
                 {{ $slot }}
             </div>
