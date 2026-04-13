@@ -16,20 +16,20 @@
             </div>
             
             <div class="flex p-1.5 bg-slate-800 rounded-xl border border-slate-700 shadow-2xl">
-                <button class="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-lg text-sm font-bold uppercase tracking-tight transition shadow-lg">
+                <a href="/soccer" class="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-lg text-sm font-bold uppercase tracking-tight transition shadow-lg">
                     <span>⚽</span>
                     <span>Fútbol</span>
-                </button>
+                </a href="">
                 
-                <button class="flex items-center gap-2 px-5 py-2.5 text-slate-400 hover:text-white hover:bg-slate-700/50 rounded-lg text-sm font-bold uppercase tracking-tight transition">
+                <a href="/basketball" class="flex items-center gap-2 px-5 py-2.5 text-slate-400 hover:text-white hover:bg-slate-700/50 rounded-lg text-sm font-bold uppercase tracking-tight transition">
                     <span>🏀</span>
                     <span>Baloncesto</span>
-                </button>
+                </a href="">
                 
-                <button class="flex items-center gap-2 px-5 py-2.5 text-slate-400 hover:text-white hover:bg-slate-700/50 rounded-lg text-sm font-bold uppercase tracking-tight transition">
+                <a href="baseball" class="flex items-center gap-2 px-5 py-2.5 text-slate-400 hover:text-white hover:bg-slate-700/50 rounded-lg text-sm font-bold uppercase tracking-tight transition">
                     <span>⚾</span>
                     <span>Béisbol</span>
-                </button>
+                </a href="">
             </div>
         </div>
 
