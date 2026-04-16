@@ -6,10 +6,11 @@ use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
+use App\Models\Baseball as Model;
 
-#[Signature('app:load-player-stats')]
-#[Description('Load player stats')]
-class LoadPlayerStats extends Command
+#[Signature('app:baseball')]
+#[Description('Seed baseball data')]
+class Baseball extends Command
 {
     /**
      * Execute the console command.
@@ -41,7 +42,11 @@ class LoadPlayerStats extends Command
                         ];
                     }
 
-                    dd($splits);
+                    Model::create([
+                        'name' => $name,
+                        'team' => $team,
+                        'splits' => $splits,
+                    ]);
                 }
             }
         }

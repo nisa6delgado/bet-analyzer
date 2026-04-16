@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\MLB;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Player extends Model
+class Baseball extends Model
 {
     //
 }
