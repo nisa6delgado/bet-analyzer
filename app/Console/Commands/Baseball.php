@@ -21,32 +21,36 @@ class Baseball extends Command
 
         $response = Http::get($url . '/api/v1/schedule?sportId=1');
 
+        Model::truncate();
+
         foreach ($response->object()->dates[0]->games as $game) {
             $response = Http::get($url . $game->link);
 
             foreach ($response->object()->gameData->players as $player) {
                 if ($player->primaryPosition->code != 1) {
                     $response = Http::get($url . $player->link . '/stats?stats=gameLog');
+
+                    if ($response->object()->stats) {
+                        $name = $response->object()->stats[0]->splits[0]->player->fullName;
+                        $team = $response->object()->stats[0]->splits[0]->team->name;
                     
-                    $name = $response->object()->stats[0]->splits[0]->player->fullName;
-                    $team = $response->object()->stats[0]->splits[0]->team->name;
+                        foreach ($response->object()->stats[0]->splits as $split) {
+                            $splits[] = [
+                                'date' => $split->date,
+                                'opponent' => $split->opponent->name,
+                                'stat' => $split->stat,
+                                'position' => implode(', ', array_column($split->positionsPlayed, 'abbreviation')),
+                                'home' => $split->isHome,
+                                'win' => $split->isWin,
+                            ];
+                        }
 
-                    foreach ($response->object()->stats[0]->splits as $split) {
-                        $splits[] = [
-                            'date' => $split->date,
-                            'opponent' => $split->opponent->name,
-                            'stat' => $split->stat,
-                            'position' => implode(', ', array_column($split->positionsPlayed, 'abbreviation')),
-                            'home' => $split->isHome,
-                            'win' => $split->isWin,
-                        ];
+                        Model::create([
+                            'name' => $name,
+                            'team' => $team,
+                            'splits' => $splits,
+                        ]);
                     }
-
-                    Model::create([
-                        'name' => $name,
-                        'team' => $team,
-                        'splits' => $splits,
-                    ]);
                 }
             }
         }

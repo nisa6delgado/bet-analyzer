@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MLB\Player;
+use App\Models\MLB\Baseball;
 use Illuminate\Http\Request;
 
 class BaseballController extends Controller
@@ -12,7 +12,7 @@ class BaseballController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $players = Player::get();
-        return view('baseball.index');
+        $players = Baseball::get();
+        return view('baseball.index', compact('players'));
     }
 }
