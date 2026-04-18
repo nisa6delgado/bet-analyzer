@@ -12,16 +12,16 @@
         </thead>
 
         <tbody class="divide-y divide-slate-700/50">
-            @foreach($players as $match)
+            @foreach($players as $player)
                 <tr class="hover:bg-slate-700/30 transition-all group">
                     <td class="px-6 py-6">
                         <div class="flex flex-col">
-                            <span class="font-mono text-xl font-bold text-white">{{ new DateTime($match->fixture->date)->format('h:ia') }}</span>
+                            <span class="font-mono text-xl font-bold text-white">1:00pm</span>
 
                             <span class="flex text-[10px] text-blue-400 font-bold uppercase mt-1">
-                                <img class="h-3 mr-1" src="{{ $match->league->flag ?? $match->league->logo }}" alt="{{ $match->league->name }}">
+                                <img class="h-3 mr-1" src="" alt="">
 
-                                {{ $match->league->name }}
+                                MLB
                             </span>
                         </div>
                     </td>
@@ -29,12 +29,12 @@
                     <td class="px-6 py-6">
                         <div class="flex items-center gap-4">
                             <div class="flex -space-x-3">
-                                <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="{{ $match->teams->home->logo }}" alt="{{ $match->teams->home->name }}">
-                                <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="{{ $match->teams->away->logo }}" alt="{{ $match->teams->away->name }}">
+                                <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="" alt="">
+                                <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="" alt="">
                             </div>
 
                             <div>
-                                <div class="font-bold text-white text-lg leading-tight">{{ $match->teams->home->name }} vs {{ $match->teams->away->name }}</div>
+                                <div class="font-bold text-white text-lg leading-tight">{{ $player->name }}</div>
                             </div>
                         </div>
                     </td>

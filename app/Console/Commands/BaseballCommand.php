@@ -10,7 +10,7 @@ use App\Models\Baseball as Model;
 
 #[Signature('app:baseball')]
 #[Description('Seed baseball data')]
-class Baseball extends Command
+class BaseballCommand extends Command
 {
     /**
      * Execute the console command.
@@ -33,13 +33,14 @@ class Baseball extends Command
                     if ($response->object()->stats) {
                         $name = $response->object()->stats[0]->splits[0]->player->fullName;
                         $team = $response->object()->stats[0]->splits[0]->team->name;
+                        $position = implode(', ', array_column($split->positionsPlayed ?? [], 'abbreviation'));
                     
                         foreach ($response->object()->stats[0]->splits as $split) {
                             $splits[] = [
                                 'date' => $split->date,
                                 'opponent' => $split->opponent->name,
                                 'stat' => $split->stat,
-                                'position' => implode(', ', array_column($split->positionsPlayed, 'abbreviation')),
+                                'position' => $position,
                                 'home' => $split->isHome,
                                 'win' => $split->isWin,
                             ];

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MLB\Baseball;
+use App\Models\Baseball;
 use Illuminate\Http\Request;
 
 class BaseballController extends Controller
