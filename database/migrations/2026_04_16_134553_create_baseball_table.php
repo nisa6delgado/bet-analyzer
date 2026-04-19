@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('baseball', function (Blueprint $table) {
             $table->id();
+            $table->string('foreign_id');
+            $table->string('foreign_team_id');
             $table->string('name');
             $table->string('team');
             $table->text('splits');

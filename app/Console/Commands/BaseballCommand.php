@@ -6,7 +6,7 @@ use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
-use App\Models\Baseball as Model;
+use App\Models\Baseball;
 
 #[Signature('app:baseball')]
 #[Description('Seed baseball data')]
@@ -21,7 +21,7 @@ class BaseballCommand extends Command
 
         $response = Http::get($url . '/api/v1/schedule?sportId=1');
 
-        Model::truncate();
+        Baseball::truncate();
 
         foreach ($response->object()->dates[0]->games as $game) {
             $response = Http::get($url . $game->link);
@@ -31,6 +31,8 @@ class BaseballCommand extends Command
                     $response = Http::get($url . $player->link . '/stats?stats=gameLog');
 
                     if ($response->object()->stats) {
+                        $foreign_id = $response->object()->stats[0]->splits[0]->player->id;
+                        $foreign_team_id = $response->object()->stats[0]->splits[0]->team->id;
                         $name = $response->object()->stats[0]->splits[0]->player->fullName;
                         $team = $response->object()->stats[0]->splits[0]->team->name;
                         $position = implode(', ', array_column($split->positionsPlayed ?? [], 'abbreviation'));
@@ -46,7 +48,9 @@ class BaseballCommand extends Command
                             ];
                         }
 
-                        Model::create([
+                        Baseball::create([
+                            'foreign_id' => $foreign_id,
+                            'foreign_team_id' => $foreign_team_id,
                             'name' => $name,
                             'team' => $team,
                             'splits' => $splits,

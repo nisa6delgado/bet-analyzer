@@ -17,20 +17,23 @@
                     <td class="px-6 py-6">
                         <div class="flex flex-col">
                             <span class="font-mono text-xl font-bold text-white">1:00pm</span>
-
-                            <span class="flex text-[10px] text-blue-400 font-bold uppercase mt-1">
-                                <img class="h-3 mr-1" src="" alt="">
-
-                                MLB
-                            </span>
                         </div>
                     </td>
                     
                     <td class="px-6 py-6">
                         <div class="flex items-center gap-4">
-                            <div class="flex -space-x-3">
-                                <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="" alt="">
-                                <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="" alt="">
+                            <div class="flex">
+                                <img
+                                    class="p-1 w-11 bg-white transition-transform"
+                                    src="https://www.mlbstatic.com/team-logos/apple-touch-icons-180x180/{{ $player->foreign_team_id }}.png"
+                                    alt="{{ $player->team }}"
+                                >
+
+                                <img
+                                    class="w-11 bg-slate-900"
+                                    src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/{{ $player->foreign_id }}/headshot/67/current"
+                                    alt="{{ $player->name }}"
+                                >
                             </div>
 
                             <div>
