@@ -33,8 +33,18 @@ class BaseballCommand extends Command
                     if ($response->object()->stats) {
                         $foreign_id = $response->object()->stats[0]->splits[0]->player->id;
                         $foreign_team_id = $response->object()->stats[0]->splits[0]->team->id;
+
                         $name = $response->object()->stats[0]->splits[0]->player->fullName;
                         $team = $response->object()->stats[0]->splits[0]->team->name;
+
+                        $opponent = $game->teams->away->team->name;
+
+                        if ($opponent == $team) {
+                            $opponent = $game->teams->home->team->name;
+                        }
+
+                        $time = $game->gameDate;
+
                         $position = implode(', ', array_column($split->positionsPlayed ?? [], 'abbreviation'));
                     
                         foreach ($response->object()->stats[0]->splits as $split) {
@@ -53,6 +63,8 @@ class BaseballCommand extends Command
                             'foreign_team_id' => $foreign_team_id,
                             'name' => $name,
                             'team' => $team,
+                            'opponent' => $opponent,
+                            'time' => $time,
                             'splits' => $splits,
                         ]);
                     }

@@ -16,7 +16,7 @@
                 <tr class="hover:bg-slate-700/30 transition-all group">
                     <td class="px-6 py-6">
                         <div class="flex flex-col">
-                            <span class="font-mono text-xl font-bold text-white">1:00pm</span>
+                            <span class="font-mono text-xl font-bold text-white">{{ $player->time }}</span>
                         </div>
                     </td>
                     
