@@ -12,7 +12,8 @@ class BaseballController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $players = Baseball::get();
+        $now = now()->utc()->format("Y-m-d\TH:i:s\Z");
+        $players = Baseball::where('time', '>=', $now)->get();
         return view('baseball.index', compact('players'));
     }
 }
