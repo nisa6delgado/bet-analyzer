@@ -13,7 +13,7 @@
                 <tr class="hover:bg-slate-700/30 transition-all group">
                     <td class="px-6 py-6">
                         <div class="flex flex-col">
-                            <span class="font-mono text-xl font-bold text-white">{{ $player->time }}</span>
+                            <span class="text-xl font-bold text-white">{{ $player->time }}</span>
                             <span class="text-[10px] text-blue-400 font-bold uppercase mt-1">vs {{ $player->opponent }}</span>
                         </div>
                     </td>
@@ -35,14 +35,33 @@
                             </div>
 
                             <div>
-                                <div class="font-bold text-white text-lg leading-tight">{{ $player->name }}</div>
+                                <div class="font-bold text-white text-lg leading-tight">
+                                    <a href="https://mlb.com/player/{{ $player->foreign_id }}" target="_blank">
+                                        {{ $player->name }}
+                                    </a>
+                                </div>
+
                                 <div class="text-xs text-slate-500 font-medium">{{ $player->team }}</div>
                             </div>
                         </div>
                     </td>
 
                     <td class="px-6 py-6 text-center">
-                        {{ bases($player->splits) }}
+                        <div class="font-black">TB</div>
+
+                        {!! prop($player->splits, 'bases') !!}
+                    </td>
+
+                    <td class="px-6 py-6 text-center">
+                        <div class="font-black">R</div>
+                        
+                        {!! prop($player->splits, 'runs') !!}
+                    </td>
+
+                    <td class="px-6 py-6 text-center">
+                        <div class="font-black">RBI</div>
+                        
+                        {!! prop($player->splits, 'rbi') !!}
                     </td>
                 </tr>
             @endforeach

@@ -46,6 +46,8 @@ class BaseballCommand extends Command
                         $time = $game->gameDate;
 
                         $position = implode(', ', array_column($split->positionsPlayed ?? [], 'abbreviation'));
+
+                        $splits = [];
                     
                         foreach ($response->object()->stats[0]->splits as $split) {
                             $splits[] = [
