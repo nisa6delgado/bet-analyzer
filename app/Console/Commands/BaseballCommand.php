@@ -26,8 +26,13 @@ class BaseballCommand extends Command
         foreach ($response->object()->dates[0]->games as $game) {
             $response = Http::get($url . $game->link);
 
-            foreach ($response->object()->gameData->players as $player) {
-                if ($player->primaryPosition->code != 1) {
+            $players = $response->object()->gameData->players;
+            $probablePitchers = $response->object()->gameData->probablePitchers;
+
+            $players = (object) array_merge((array) $probablePitchers, (array) $players);
+
+            foreach ($players as $player) {
+                if (! isset($player->primaryPosition) || $player->primaryPosition->code != 1) {
                     $response = Http::get($url . $player->link . '/stats?stats=gameLog');
 
                     if ($response->object()->stats) {

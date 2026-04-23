@@ -11,6 +11,35 @@ function prop($splits, $prop)
         $line = 1;
     }
 
+    if ($prop == 'ip') {
+        $prop = 'inningsPitched';
+        $line = 4.9;
+    }
+
+    if ($prop == 'k') {
+        $prop = 'strikeOuts';
+        $line = 4;
+    }
+
+    if ($prop == 'bb') {
+        $prop = 'baseOnBalls';
+        $line = 2;
+    }
+
+    if ($prop == 'r') {
+        $prop = 'runs';
+        $line = 2;
+    }
+
+    if ($prop == 'h') {
+        $prop = 'hits';
+        $line = isset($splits[0]['stat']['era']) ? 3 : 0;
+    }
+
+    if ($prop == 'hr') {
+        $prop = 'homeRuns';
+    }
+
     foreach ($splits as $split) {
         if (isset($split['stat'][$prop])) {
             if ($split['stat'][$prop] > $line) {

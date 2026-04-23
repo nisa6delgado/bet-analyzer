@@ -4,7 +4,7 @@
             <tr class="border-b border-slate-700 bg-slate-800/50">
                 <th class="px-6 py-5 text-[11px] font-bold uppercase text-slate-500 tracking-widest">Horario / Rival</th>
                 <th class="px-6 py-5 text-[11px] font-bold uppercase text-slate-500 tracking-widest">Jugador</th>
-                <th class="px-6 py-5 text-[11px] font-bold uppercase text-slate-500 tracking-widest text-center"></th>
+                <th class="px-6 py-5 text-[11px] font-bold uppercase text-slate-500 tracking-widest text-center" colspan="5"></th>
             </tr>
         </thead>
 
@@ -46,23 +46,67 @@
                         </div>
                     </td>
 
-                    <td class="px-6 py-6 text-center">
-                        <div class="font-black">TB</div>
+                    @if(isset($player->splits[0]['stat']['era']))
+                        <td class="px-6 py-6 text-center">
+                            <div class="font-black">IP</div>
 
-                        {!! prop($player->splits, 'bases') !!}
-                    </td>
+                            {!! prop($player->splits, 'ip') !!}
+                        </td>
 
-                    <td class="px-6 py-6 text-center">
-                        <div class="font-black">R</div>
-                        
-                        {!! prop($player->splits, 'runs') !!}
-                    </td>
+                        <td class="px-6 py-6 text-center">
+                            <div class="font-black">ER</div>
 
-                    <td class="px-6 py-6 text-center">
-                        <div class="font-black">RBI</div>
-                        
-                        {!! prop($player->splits, 'rbi') !!}
-                    </td>
+                            {!! prop($player->splits, 'r') !!}
+                        </td>
+
+                        <td class="px-6 py-6 text-center">
+                            <div class="font-black">H</div>
+
+                            {!! prop($player->splits, 'h') !!}
+                        </td>
+
+                        <td class="px-6 py-6 text-center">
+                            <div class="font-black">K</div>
+
+                            {!! prop($player->splits, 'k') !!}
+                        </td>
+
+                        <td class="px-6 py-6 text-center">
+                            <div class="font-black">BB</div>
+
+                            {!! prop($player->splits, 'bb') !!}
+                        </td>
+                    @else
+                        <td class="px-6 py-6 text-center">
+                            <div class="font-black">TB</div>
+
+                            {!! prop($player->splits, 'bases') !!}
+                        </td>
+
+                        <td class="px-6 py-6 text-center">
+                            <div class="font-black">R</div>
+                            
+                            {!! prop($player->splits, 'runs') !!}
+                        </td>
+
+                        <td class="px-6 py-6 text-center">
+                            <div class="font-black">RBI</div>
+                            
+                            {!! prop($player->splits, 'rbi') !!}
+                        </td>
+
+                        <td class="px-6 py-6 text-center">
+                            <div class="font-black">HR</div>
+                            
+                            {!! prop($player->splits, 'hr') !!}
+                        </td>
+
+                        <td class="px-6 py-6 text-center">
+                            <div class="font-black">H</div>
+                            
+                            {!! prop($player->splits, 'h') !!}
+                        </td>
+                    @endif
                 </tr>
             @endforeach
         </tbody>
