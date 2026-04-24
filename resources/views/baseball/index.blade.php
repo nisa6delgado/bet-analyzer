@@ -1,4 +1,61 @@
 <x-layout>
+    <div class="bg-slate-800/50 p-6 border-b border-slate-700 mb-4 rounded-t-xl">
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div class="flex flex-col gap-2">
+                <label class="text-[10px] font-bold uppercase text-slate-500 tracking-widest">Equipo</label>
+
+                <select class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                    <option value="">Todos</option>
+
+                    @foreach($teams as $team)
+                        <option value="{{ $team }}">{{ $team }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="text-[10px] font-bold uppercase text-slate-500 tracking-widest">Posición</label>
+                <select class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                    <option value="">Todas</option>
+                    <option value="pitcher">Lanzadores</option>
+                    <option value="batter">Bateadores</option>
+                </select>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="text-[10px] font-bold uppercase text-slate-500 tracking-widest">Rival</label>
+                <select class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                    <option value="">Todos</option>
+                </select>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="text-[10px] font-bold uppercase text-slate-500 tracking-widest">Horario</label>
+                <select class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                    <option value="">Cualquier hora</option>
+                </select>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="text-[10px] font-bold uppercase text-slate-500 tracking-widest">Lanzador/Bateo</label>
+                <select class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                    <option value="">Ambos</option>
+                    <option value="L">Zurdo</option>
+                    <option value="R">Derecho</option>
+                </select>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="text-[10px] font-bold uppercase text-slate-500 tracking-widest">Estatus</label>
+                <select class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                    <option value="">Ver todos</option>
+                    <option value="active">Activos</option>
+                    <option value="injured">Lesionados</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
     <table class="w-full text-left min-w-[950px]">
         <thead>
             <tr class="border-b border-slate-700 bg-slate-800/50">

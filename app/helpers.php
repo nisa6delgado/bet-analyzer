@@ -8,7 +8,7 @@ function prop($splits, $prop)
 
     if ($prop == 'bases') {
         $prop = 'totalBases';
-        $line = 1;
+        $line = request()->bases ?? 1;
     }
 
     if ($prop == 'ip') {
@@ -18,22 +18,27 @@ function prop($splits, $prop)
 
     if ($prop == 'k') {
         $prop = 'strikeOuts';
-        $line = 4;
+        $line = request()->k ?? 4;
     }
 
     if ($prop == 'bb') {
         $prop = 'baseOnBalls';
-        $line = 2;
+        $line = request()->bb ?? 2;
     }
 
     if ($prop == 'r') {
         $prop = 'runs';
-        $line = 2;
+        $line = request()->r ?? 2;
     }
 
     if ($prop == 'h') {
         $prop = 'hits';
-        $line = isset($splits[0]['stat']['era']) ? 3 : 0;
+
+        if (isset($splits[0]['stat']['era'])) {
+            $line = request()->h ?? 3;
+        } else {
+            $line = request()->h ?? 0;
+        }
     }
 
     if ($prop == 'hr') {

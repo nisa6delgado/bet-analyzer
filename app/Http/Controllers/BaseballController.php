@@ -12,8 +12,22 @@ class BaseballController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $now = now()->utc()->format("Y-m-d\TH:i:s\Z");
-        $players = Baseball::where('time', '>=', $now)->get();
-        return view('baseball.index', compact('players'));
+        $now = now()
+            ->utc()
+            ->format("Y-m-d\TH:i:s\Z");
+
+        $team = $request->team;
+
+        $players = Baseball::where('time', '>=', $now)
+            ->when($team, function ($query) use ($team) {
+                $query->where('team', $team);
+            })
+            ->get();
+
+        $teams = $players->pluck('team')
+            ->unique()
+            ->sort();
+
+        return view('baseball.index', compact('players', 'teams'));
     }
 }
