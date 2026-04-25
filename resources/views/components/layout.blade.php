@@ -7,6 +7,7 @@
     <title>Bet Analyzer</title>
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
     <div class="bg-slate-900 min-h-screen p-4 md:p-8 text-slate-200">

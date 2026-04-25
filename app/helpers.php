@@ -6,6 +6,10 @@ function prop($splits, $prop)
     $propL15 = 0;
     $line = 0;
 
+    if ($prop == 'rbi') {
+        $line = request()->rbi ?? 1;
+    }
+
     if ($prop == 'bases') {
         $prop = 'totalBases';
         $line = request()->bases ?? 1;
