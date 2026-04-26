@@ -17,7 +17,7 @@ function prop($splits, $prop)
 
     if ($prop == 'ip') {
         $prop = 'inningsPitched';
-        $line = 4.9;
+        $line = request()->ip ?? 4.9;
     }
 
     if ($prop == 'k') {

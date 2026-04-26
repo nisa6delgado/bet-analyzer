@@ -6,64 +6,66 @@
                     &times;
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-                    <div class="flex flex-col gap-2">
-                        <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Equipo</label>
+                <form>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                        <div class="flex flex-col gap-2">
+                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Equipo</label>
 
-                        <select name="team" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                            <option value="">Todos</option>
+                            <select name="team" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                                <option value="">Todos</option>
 
-                            @foreach($teams as $team)
-                                <option value="{{ $team }}">{{ $team }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                                @foreach($teams as $team)
+                                    <option {{ $team == request()->team ? 'selected' : '' }} value="{{ $team }}">{{ $team }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
-                    <div class="flex flex-col gap-2">
-                        <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Bases</label>
-                        <input name="bases" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                    </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Bases</label>
+                            <input value="{{ request()->bases }}" name="bases" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                        </div>
 
-                    <div class="flex flex-col gap-2">
-                        <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Innings</label>
-                        <input name="ip" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                    </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Innings</label>
+                            <input value="{{ request()->ip }}" name="ip" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                        </div>
 
-                    <div class="flex flex-col gap-2">
-                        <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Ponches</label>
-                        <input name="k" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                    </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Ponches</label>
+                            <input value="{{ request()->k }}" name="k" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                        </div>
 
-                    <div class="flex flex-col gap-2">
-                        <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Boletos</label>
-                        <input name="bb" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                    </div>
-                    
-                    <div class="flex flex-col gap-2">
-                        <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Carreras</label>
-                        <input name="r" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                    </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Boletos</label>
+                            <input value="{{ request()->bb }}" name="bb" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                        </div>
+                        
+                        <div class="flex flex-col gap-2">
+                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Carreras</label>
+                            <input value="{{ request()->r }}" name="r" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                        </div>
 
-                    <div class="flex flex-col gap-2">
-                        <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Impulsadas</label>
-                        <input name="k" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                    </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Impulsadas</label>
+                            <input value="{{ request()->rbi }}" name="rbi" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                        </div>
 
-                    <div class="flex flex-col gap-2">
-                        <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Hits</label>
-                        <input name="h" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                    </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Hits</label>
+                            <input value="{{ request()->h }}" name="h" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                        </div>
 
-                    <div class="flex flex-col gap-2">
-                        <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Jonrones</label>
-                        <input name="hr" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                    </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Jonrones</label>
+                            <input value="{{ request()->hr }}" name="hr" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                        </div>
 
-                    <div class="flex flex-col gap-2">
-                        <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">&nbsp;</label>
-                        <button class="cursor-pointer bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">Filtrar</button>
+                        <div class="flex flex-col gap-2">
+                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">&nbsp;</label>
+                            <button class="cursor-pointer bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">Guardar</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
 
             <div x-show="!filters" x-on:click="filters = true" class="text-[11px] px-1 py-2 ml-4 font-bold text-slate-500 tracking-widest cursor-pointer">
