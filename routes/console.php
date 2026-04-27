@@ -8,3 +8,4 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Schedule::command('app:baseball')->dailyAt('12:00');
+Schedule::command('app:soccer')->dailyAt('12:00');
