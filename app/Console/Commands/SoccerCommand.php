@@ -5,9 +5,11 @@ namespace App\Console\Commands;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Http;
+use App\Models\Soccer;
 
 #[Signature('app:soccer')]
-#[Description('Command description')]
+#[Description('Seed soccer data')]
 class SoccerCommand extends Command
 {
     /**
