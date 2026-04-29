@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('soccer', function (Blueprint $table) {
             $table->id();
+            $table->string('foreign_id');
             $table->string('date');
             $table->text('league');
             $table->text('teams');

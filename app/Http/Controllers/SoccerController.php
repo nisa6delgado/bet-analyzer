@@ -12,7 +12,7 @@ class SoccerController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request, $id = '')
     {
         $matches = Soccer::get();
         return view('soccer.index', compact('matches'));

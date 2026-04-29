@@ -31,8 +31,11 @@ class SoccerCommand extends Command
         $response = Http::withHeaders($headers)
             ->get('https://v3.football.api-sports.io/fixtures', $params);
 
+        Soccer::truncate();
+
         foreach (collect($response->object()->response) as $match) {
             Soccer::create([
+                'foreign_id' => $match->fixture->id,
                 'date' => $match->fixture->date,
                 'league' => $match->league,
                 'teams' => $match->teams,

@@ -37,9 +37,9 @@
                     </td>
                     
                     <td class="px-6 py-6 text-center">
-                        <button type="button" class="cursor-pointer inline-block bg-blue-500/10 text-blue-400 border border-blue-500/30 px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-tighter">
+                        <a href="/soccer/{{ $match->foreign_id }}" class="cursor-pointer inline-block bg-blue-500/10 text-blue-400 border border-blue-500/30 px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-tighter">
                             Ver datos
-                        </button>
+                        </a>
                     </td>
                 </tr>
             @endforeach
