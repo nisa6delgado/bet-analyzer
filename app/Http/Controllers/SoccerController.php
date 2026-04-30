@@ -14,6 +14,49 @@ class SoccerController extends Controller
      */
     public function __invoke(Request $request, $id = '')
     {
+        if ($id) {
+            $headers = ['x-apisports-key' => env('API_FOOTBALL_KEY')];
+
+            $params = [
+                'id' => $id,
+                'timezone' => 'America/Caracas',
+            ];
+
+            $response = Http::withHeaders($headers)
+                ->get('https://v3.football.api-sports.io/fixtures', $params);
+
+            $fixture = $response->object()->response[0];
+
+            //dd($fixture);
+
+            $params = [
+                'timezone' => 'America/Caracas',
+                'team' => $fixture->teams->home->id,
+                'season' => $fixture->league->season,
+                'status' => 'FT'
+            ];
+
+            $response = Http::withHeaders($headers)
+                ->get('https://v3.football.api-sports.io/fixtures', $params);
+
+            $home = $response->object()->response;
+
+            $params['team'] = $fixture->teams->away->id;
+
+            $response = Http::withHeaders($headers)
+                ->get('https://v3.football.api-sports.io/fixtures', $params);
+
+            $away = $response->object()->response;
+
+            $results = json_encode([
+                'home' => $home,
+                'away' => $away,
+            ]);
+
+            Soccer::where('foreign_id', $id)
+                ->update(['results' => $results]);
+        }
+
         $matches = Soccer::get();
         return view('soccer.index', compact('matches'));
     }

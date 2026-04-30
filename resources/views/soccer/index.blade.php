@@ -37,9 +37,31 @@
                     </td>
                     
                     <td class="px-6 py-6 text-center">
-                        <a href="/soccer/{{ $match->foreign_id }}" class="cursor-pointer inline-block bg-blue-500/10 text-blue-400 border border-blue-500/30 px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-tighter">
-                            Ver datos
-                        </a>
+                        @if($match->results)
+                            <div class="flex">
+                                <div class="text-center mx-4">
+                                    <div class="font-black">BTTS</div>
+
+                                    {!! goals($match->results, 'btts') !!}
+                                </div>
+
+                                <div class="text-center mx-4">
+                                    <div class="font-black">OVER 1.5</div>
+
+                                    {!! goals($match->results, '1.5') !!}
+                                </div>
+
+                                <div class="text-center mx-4">
+                                    <div class="font-black">OVER 2.5</div>
+
+                                    {!! goals($match->results, '2.5') !!}
+                                </div>
+                            </div>
+                        @else
+                            <a href="/soccer/{{ $match->foreign_id }}" class="cursor-pointer inline-block bg-blue-500/10 text-blue-400 border border-blue-500/30 px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-tighter">
+                                Ver datos
+                            </a>
+                        @endif
                     </td>
                 </tr>
             @endforeach

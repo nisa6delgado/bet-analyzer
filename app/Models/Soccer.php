@@ -11,5 +11,6 @@ class Soccer extends Model
     protected $casts = [
         'league' => 'object',
         'teams' => 'object',
+        'results' => 'object',
     ];
 }

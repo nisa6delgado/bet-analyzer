@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('date');
             $table->text('league');
             $table->text('teams');
+            $table->text('results')->nullable();
             $table->timestamps();
         });
     }

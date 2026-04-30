@@ -1,5 +1,48 @@
 <?php
 
+function goals($data, $market)
+{
+    $total_home = 0;
+    $total_away = 0;
+
+    foreach ($data->home as $item) {
+        $total = $item->goals->home + $item->goals->away;
+
+        if ($market == '1.5') {
+            if ($total > 1.5) {
+                $total_home++;
+            }
+        }
+    }
+
+    if ($total_home >= (count($data->home) / 2)) {
+        $class_home = 'text-emerald-400';
+    } else {
+        $class_home = 'text-red-400';
+    }
+
+    foreach ($data->away as $item) {
+        $total = $item->goals->home + $item->goals->away;
+
+        if ($market == '1.5') {
+            if ($total > 1.5) {
+                $total_away++;
+            }
+        }
+    }
+
+    if ($total_away >= (count($data->away) / 2)) {
+        $class_away = 'text-emerald-400';
+    } else {
+        $class_away = 'text-red-400';
+    }
+
+    $result = '<div class="font-black ' . $class_home . '">' . $total_home . ' de ' . count($data->home) . '</div>';
+    $result .= '<div class="font-black ' . $class_away . '">' . $total_away . ' de ' . count($data->away) . '</div>';
+
+    return $result;
+}
+
 function prop($splits, $prop)
 {
     $propT = 0;
