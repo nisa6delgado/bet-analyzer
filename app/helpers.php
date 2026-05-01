@@ -8,8 +8,20 @@ function goals($data, $market)
     foreach ($data->home as $item) {
         $total = $item->goals->home + $item->goals->away;
 
+        if ($market == 'btts') {
+            if ($item->goals->home > 0 && $item->goals->away > 0) {
+                $total_home++;
+            }
+        }
+
         if ($market == '1.5') {
             if ($total > 1.5) {
+                $total_home++;
+            }
+        }
+
+        if ($market == '2.5') {
+            if ($total > 2.5) {
                 $total_home++;
             }
         }
@@ -24,8 +36,20 @@ function goals($data, $market)
     foreach ($data->away as $item) {
         $total = $item->goals->home + $item->goals->away;
 
+        if ($market == 'btts') {
+            if ($item->goals->home > 0 && $item->goals->away > 0) {
+                $total_away++;
+            }
+        }
+
         if ($market == '1.5') {
             if ($total > 1.5) {
+                $total_away++;
+            }
+        }
+
+        if ($market == '2.5') {
+            if ($total > 2.5) {
                 $total_away++;
             }
         }

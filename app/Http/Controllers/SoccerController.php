@@ -55,9 +55,11 @@ class SoccerController extends Controller
 
             Soccer::where('foreign_id', $id)
                 ->update(['results' => $results]);
+
+            return redirect('/soccer#match-' . $id);
         }
 
         $matches = Soccer::get();
-        return view('soccer.index', compact('matches'));
+        return view('soccer.index', compact('id', 'matches'));
     }
 }

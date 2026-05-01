@@ -10,7 +10,7 @@
 
         <tbody class="divide-y divide-slate-700/50">
             @foreach($matches as $match)
-                <tr class="hover:bg-slate-700/30 transition-all group">
+                <tr id="match-{{ $match->foreign_id }}" class="hover:bg-slate-700/30 transition-all group">
                     <td class="px-6 py-6">
                         <div class="flex flex-col">
                             <span class="font-mono text-xl font-bold text-white">{{ new DateTime($match->date)->format('h:ia') }}</span>
