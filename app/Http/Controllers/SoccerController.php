@@ -27,8 +27,6 @@ class SoccerController extends Controller
 
             $fixture = $response->object()->response[0];
 
-            //dd($fixture);
-
             $params = [
                 'timezone' => 'America/Caracas',
                 'team' => $fixture->teams->home->id,
@@ -59,7 +57,7 @@ class SoccerController extends Controller
             return redirect('/soccer#match-' . $id);
         }
 
-        $matches = Soccer::get();
+        $matches = Soccer::where('date', '>', now()->format("Y-m-d\TH:i:s-04:00"))->get();
         return view('soccer.index', compact('id', 'matches'));
     }
 }
