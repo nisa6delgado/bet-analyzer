@@ -58,6 +58,19 @@ class SoccerController extends Controller
         }
 
         $matches = Soccer::where('date', '>', now()->format("Y-m-d\TH:i:s-04:00"))->get();
-        return view('soccer.index', compact('id', 'matches'));
+
+        $teams = [];
+
+        foreach ($matches as $match) {
+            if (! in_array($match->teams->home->name, $teams)) {
+                $teams[] = $match->teams->home->name;
+            }
+
+            if (! in_array($match->teams->away->name, $teams)) {
+                $teams[] = $match->teams->away->name;
+            }
+        }
+        
+        return view('soccer.index', compact('id', 'matches', 'teams'));
     }
 }
