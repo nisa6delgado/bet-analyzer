@@ -9,13 +9,13 @@
                 <form>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                         <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Equipo</label>
+                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Liga</label>
 
-                            <select name="team" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                                <option value="">Todos</option>
+                            <select name="league" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                                <option value="">Todas</option>
 
-                                @foreach($teams as $team)
-                                    <option {{ $team == request()->team ? 'selected' : '' }} value="{{ $team }}">{{ $team }}</option>
+                                @foreach($leagues as $league)
+                                    <option {{ $league == request()->league ? 'selected' : '' }} value="{{ $league }}">{{ $league }}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -57,20 +57,28 @@ class SoccerController extends Controller
             return redirect('/soccer#match-' . $id);
         }
 
-        $matches = Soccer::where('date', '>', now()->format("Y-m-d\TH:i:s-04:00"))->get();
+        $league = $request->league;
 
-        $teams = [];
+        $matches = Soccer::where('date', '>', now()->format("Y-m-d\TH:i:s-04:00"))
+            ->when($league, function ($query) use ($league) {
+                $query->whereLike('league', '%' . $league . '%');
+            })
+            ->get();
+
+        $leagues = [];
 
         foreach ($matches as $match) {
-            if (! in_array($match->teams->home->name, $teams)) {
-                $teams[] = $match->teams->home->name;
+            $league = $match->league->name;
+            
+            if ($match->league->country != 'World') {
+                $league = $league . ' - ' . $match->league->country;
             }
 
-            if (! in_array($match->teams->away->name, $teams)) {
-                $teams[] = $match->teams->away->name;
+            if (! in_array($league, $leagues)) {
+                $leagues[] = $league;
             }
         }
         
-        return view('soccer.index', compact('id', 'matches', 'teams'));
+        return view('soccer.index', compact('id', 'matches', 'leagues'));
     }
 }
