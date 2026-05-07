@@ -61,7 +61,12 @@ class SoccerController extends Controller
 
         $matches = Soccer::where('date', '>', now()->format("Y-m-d\TH:i:s-04:00"))
             ->when($league, function ($query) use ($league) {
-                $query->whereLike('league', '%' . $league . '%');
+                $league = explode(' - ', $league);
+                $country = $league[1];
+                $league = $league[0];
+                
+                $query->whereLike('league', '%' . $league . '%')
+                    ->whereLike('league', '%' . $country . '%');
             })
             ->get();
 

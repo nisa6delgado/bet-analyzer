@@ -21,43 +21,8 @@
                         </div>
 
                         <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Bases</label>
-                            <input value="{{ request()->bases }}" name="bases" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Innings</label>
-                            <input value="{{ request()->ip }}" name="ip" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Ponches</label>
-                            <input value="{{ request()->k }}" name="k" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Boletos</label>
-                            <input value="{{ request()->bb }}" name="bb" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                        </div>
-                        
-                        <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Carreras</label>
-                            <input value="{{ request()->r }}" name="r" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Impulsadas</label>
-                            <input value="{{ request()->rbi }}" name="rbi" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Hits</label>
-                            <input value="{{ request()->h }}" name="h" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Jonrones</label>
-                            <input value="{{ request()->hr }}" name="hr" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Fecha</label>
+                            <input value="{{ request()->date }}" name="date" type="date" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
                         </div>
 
                         <div class="flex flex-col gap-2">
