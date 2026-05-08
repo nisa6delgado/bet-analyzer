@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Http;
 use App\Models\Soccer;
 
@@ -57,9 +58,19 @@ class SoccerController extends Controller
             return redirect('/soccer#match-' . $id);
         }
 
+        $date = $request->date ?? now()->format("Y-m-d\TH:i:s-04:00");
+
+        if ($request->date) {
+            $count = Soccer::where('date', $date)->count();
+
+            if (! $count) {
+                Artisan::call('app:soccer ' . $request->date);
+            }
+        }
+
         $league = $request->league;
 
-        $matches = Soccer::where('date', '>', now()->format("Y-m-d\TH:i:s-04:00"))
+        $matches = Soccer::where('date', '>', $date)
             ->when($league, function ($query) use ($league) {
                 $league = explode(' - ', $league);
                 $country = $league[1];

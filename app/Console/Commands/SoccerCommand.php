@@ -20,7 +20,6 @@ class SoccerCommand extends Command
         $headers = ['x-apisports-key' => env('API_FOOTBALL_KEY')];
 
         $date = $this->argument('date') ?? now()->format('Y-m-d');
-        $datetime = now()->format("Y-m-d\TH:i:sP");
 
         if ($this->argument('date') && now()->format('Y-m-d') > $this->argument('date')) {
             $this->error('Sólo puede consultar fechas futuras');

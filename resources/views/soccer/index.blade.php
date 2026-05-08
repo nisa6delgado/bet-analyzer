@@ -22,7 +22,7 @@
 
                         <div class="flex flex-col gap-2">
                             <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Fecha</label>
-                            <input value="{{ request()->date }}" name="date" type="date" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                            <input value="{{ request()->date }}" min="{{ now()->format('Y-m-d') }}" name="date" type="date" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
                         </div>
 
                         <div class="flex flex-col gap-2">
