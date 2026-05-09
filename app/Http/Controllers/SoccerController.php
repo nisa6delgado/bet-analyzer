@@ -58,10 +58,16 @@ class SoccerController extends Controller
             return redirect('/soccer#match-' . $id);
         }
 
-        $date = $request->date ?? now()->format("Y-m-d\TH:i:s-04:00");
+        if ($request->date) {
+            $timestamp = $request->date . 'T' . now()->format('H:i:s-04:00');
+            $date = $request->date;
+        }
+
+        $timestamp = $timestamp ?? now()->format("Y-m-d\TH:i:s-04:00");
+        $date = now()->format('Y-m-d');
 
         if ($request->date) {
-            $count = Soccer::where('date', $date)->count();
+            $count = Soccer::where('date', $timestamp)->count();
 
             if (! $count) {
                 Artisan::call('app:soccer ' . $request->date);
@@ -70,7 +76,8 @@ class SoccerController extends Controller
 
         $league = $request->league;
 
-        $matches = Soccer::where('date', '>', $date)
+        $matches = Soccer::where('date', '>', $timestamp)
+            ->whereDate('date', $date)
             ->when($league, function ($query) use ($league) {
                 $league = explode(' - ', $league);
                 $country = $league[1];

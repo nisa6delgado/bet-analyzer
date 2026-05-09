@@ -55,7 +55,13 @@
                 <tr id="match-{{ $match->foreign_id }}" class="hover:bg-slate-700/30 transition-all group">
                     <td class="px-6 py-6">
                         <div class="flex flex-col">
-                            <span class="font-mono text-xl font-bold text-white">{{ new DateTime($match->date)->format('h:ia') }}</span>
+                            <span class="font-mono text-xl font-bold text-white">
+                                @if(new DateTime($match->date)->format('Y-m-d') != new DateTime()->format('Y-m-d'))
+                                    {{ new DateTime($match->date)->format('d/m/Y') }}
+                                @endif
+
+                                {{ new DateTime($match->date)->format('h:ia') }}
+                            </span>
 
                             <span class="flex text-[10px] text-blue-400 font-bold uppercase mt-1">
                                 <img class="h-3 mr-1" src="{{ $match->league->flag ?? $match->league->logo }}" alt="{{ $match->league->name }}">

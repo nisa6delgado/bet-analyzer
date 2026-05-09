@@ -34,6 +34,8 @@ class SoccerCommand extends Command
         $response = Http::withHeaders($headers)
             ->get('https://v3.football.api-sports.io/fixtures', $params);
 
+        Soccer::where('date', '<', now()->format('Y-m-d'))->delete();
+
         foreach (collect($response->object()->response) as $match) {
             Soccer::updateOrCreate(
                 ['foreign_id' => $match->fixture->id],
