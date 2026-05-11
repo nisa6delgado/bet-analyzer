@@ -64,7 +64,7 @@ class SoccerController extends Controller
         }
 
         $timestamp = $timestamp ?? now()->format("Y-m-d\TH:i:s-04:00");
-        $date = now()->format('Y-m-d');
+        $date = $date ?? now()->format('Y-m-d');
 
         if ($request->date) {
             $count = Soccer::where('date', $timestamp)->count();

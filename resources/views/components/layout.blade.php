@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bet Analyzer</title>
 
+    <link rel="icon" type="image/png" href="/favicon.png">
+
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
@@ -13,7 +15,11 @@
     <div class="bg-slate-900 min-h-screen p-4 md:p-8 text-slate-200">
         <div class="mx-auto mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
-                <h2 class="text-3xl font-extrabold text-white tracking-tighter">Bet Analyzer</h2>
+                <h2 class="text-3xl flex font-extrabold text-white tracking-tighter">
+                    <img class="h-15 mr-5" src="/favicon.png" alt="Bet Analyzer">
+
+                    <span class="mt-3">Bet Analyzer</span>
+                </h2>
             </div>
             
             <div class="flex p-1.5 bg-slate-800 rounded-xl border border-slate-700 shadow-2xl">
