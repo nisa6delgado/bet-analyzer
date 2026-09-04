@@ -8,7 +8,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use App\Models\Soccer;
 
-#[Signature('app:soccer {date?}')]
+#[Signature('soccer {date?}')]
 #[Description('Seed soccer data')]
 class SoccerCommand extends Command
 {

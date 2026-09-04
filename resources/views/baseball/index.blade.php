@@ -81,7 +81,9 @@
             <tr class="border-b border-slate-700 bg-slate-800/50">
                 <th class="px-6 py-5 text-[11px] font-bold uppercase text-slate-500 tracking-widest">Horario / Rival</th>
                 <th class="px-6 py-5 text-[11px] font-bold uppercase text-slate-500 tracking-widest">Jugador</th>
-                <th class="px-6 py-5 text-[11px] font-bold uppercase text-slate-500 tracking-widest text-center" colspan="5"></th>
+                <th class="px-6 py-5 text-[11px] font-bold uppercase text-slate-500 tracking-widest text-right" colspan="5">
+                    Última actualización: {{ $players[0]->created_at->format('d/m/Y h:i A') }}
+                </th>
             </tr>
         </thead>
 

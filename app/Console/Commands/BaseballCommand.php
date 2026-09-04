@@ -8,7 +8,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use App\Models\Baseball;
 
-#[Signature('app:baseball')]
+#[Signature('baseball')]
 #[Description('Seed baseball data')]
 class BaseballCommand extends Command
 {
