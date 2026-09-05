@@ -127,33 +127,43 @@
 
                     @if(isset($player->splits[0]['stat']['era']))
                         <td class="px-6 py-6 text-center">
-                            <div class="font-black">IP</div>
+                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/outs-recorded">
+                                <div class="font-black">IP</div>
 
-                            {!! prop($player->splits, 'ip') !!}
+                                {!! prop($player->splits, 'ip') !!}
+                            </a>
                         </td>
 
                         <td class="px-6 py-6 text-center">
-                            <div class="font-black">ER</div>
+                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/earned-runs-allowed">
+                                <div class="font-black">ER</div>
 
-                            {!! prop($player->splits, 'r') !!}
+                                {!! prop($player->splits, 'r') !!}
+                            </a>
+                        </td>
+                        
+                        <td class="px-6 py-6 text-center">
+                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/hits-allowed">
+                                <div class="font-black">H</div>
+
+                                {!! prop($player->splits, 'h') !!}
+                            </a>
                         </td>
 
                         <td class="px-6 py-6 text-center">
-                            <div class="font-black">H</div>
+                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/strikeouts">
+                                <div class="font-black">K</div>
 
-                            {!! prop($player->splits, 'h') !!}
+                                {!! prop($player->splits, 'k') !!}
+                            </a>
                         </td>
 
                         <td class="px-6 py-6 text-center">
-                            <div class="font-black">K</div>
+                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/walks-allowed">
+                                <div class="font-black">BB</div>
 
-                            {!! prop($player->splits, 'k') !!}
-                        </td>
-
-                        <td class="px-6 py-6 text-center">
-                            <div class="font-black">BB</div>
-
-                            {!! prop($player->splits, 'bb') !!}
+                                {!! prop($player->splits, 'bb') !!}
+                            </a>
                         </td>
                     @else
                         <td class="px-6 py-6 text-center">
