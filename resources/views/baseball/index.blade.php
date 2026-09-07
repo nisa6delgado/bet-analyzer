@@ -169,33 +169,43 @@
                         </td>
                     @else
                         <td class="px-6 py-6 text-center">
-                            <div class="font-black">TB</div>
+                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/total-bases">
+                                <div class="font-black">TB</div>
 
-                            {!! prop($player->splits, 'bases') !!}
+                                {!! prop($player->splits, 'bases') !!}
+                            </a>
                         </td>
 
                         <td class="px-6 py-6 text-center">
-                            <div class="font-black">R</div>
-                            
-                            {!! prop($player->splits, 'runs') !!}
+                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/runs">
+                                <div class="font-black">R</div>
+                                
+                                {!! prop($player->splits, 'runs') !!}
+                            </a>
                         </td>
 
                         <td class="px-6 py-6 text-center">
-                            <div class="font-black">RBI</div>
-                            
-                            {!! prop($player->splits, 'rbi') !!}
+                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/rbi">
+                                <div class="font-black">RBI</div>
+                                
+                                {!! prop($player->splits, 'rbi') !!}
+                            </a>
                         </td>
 
                         <td class="px-6 py-6 text-center">
-                            <div class="font-black">HR</div>
-                            
-                            {!! prop($player->splits, 'hr') !!}
+                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/homeruns">
+                                <div class="font-black">HR</div>
+                                
+                                {!! prop($player->splits, 'hr') !!}
+                            </a>
                         </td>
 
                         <td class="px-6 py-6 text-center">
-                            <div class="font-black">H</div>
-                            
-                            {!! prop($player->splits, 'h') !!}
+                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/hits">
+                                <div class="font-black">H</div>
+                                
+                                {!! prop($player->splits, 'h') !!}
+                            </a>
                         </td>
                     @endif
                 </tr>
