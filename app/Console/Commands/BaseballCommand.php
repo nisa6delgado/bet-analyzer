@@ -66,6 +66,7 @@ class BaseballCommand extends Command
                         }
 
                         Baseball::create([
+                            'game_id' => $game->gamePk,
                             'foreign_id' => $foreign_id,
                             'foreign_team_id' => $foreign_team_id,
                             'name' => $name,

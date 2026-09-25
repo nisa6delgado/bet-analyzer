@@ -93,10 +93,12 @@
             @foreach($players as $player)
                 <tr class="hover:bg-slate-700/30 transition-all group">
                     <td class="px-6 py-6">
-                        <div class="flex flex-col">
-                            <span class="text-xl font-bold text-white">{{ $player->time }}</span>
-                            <span class="text-[10px] text-blue-400 font-bold uppercase mt-1">vs {{ $player->opponent }}</span>
-                        </div>
+                        <a target="_blank" href="https://mlb.com/gameday/{{ $player->game_id }}">
+                            <div class="flex flex-col">
+                                <span class="text-xl font-bold text-white">{{ $player->time }}</span>
+                                <span class="text-[10px] text-blue-400 font-bold uppercase mt-1">vs {{ $player->opponent }}</span>
+                            </div>
+                        </a>
                     </td>
                     
                     <td class="px-6 py-6">
