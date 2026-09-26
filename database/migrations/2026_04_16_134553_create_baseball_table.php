@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('foreign_id');
             $table->string('foreign_team_id');
             $table->string('name');
+            $table->string('hand');
             $table->string('team');
             $table->string('opponent');
             $table->string('time');

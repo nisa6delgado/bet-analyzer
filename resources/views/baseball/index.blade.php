@@ -120,7 +120,7 @@
                             <div>
                                 <div class="font-bold text-white text-lg leading-tight">
                                     <a href="https://mlb.com/player/{{ $player->foreign_id }}" target="_blank">
-                                        {{ $player->name }}
+                                        {{ $player->name }} ({{ $player->hand }})
                                     </a>
                                 </div>
 

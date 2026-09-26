@@ -42,6 +42,12 @@ class BaseballCommand extends Command
                         $name = $response->object()->stats[0]->splits[0]->player->fullName;
                         $team = $response->object()->stats[0]->splits[0]->team->name;
 
+                        if (isset($player->batSide->code)) {
+                            $hand = $player->batSide->code;
+                        } else {
+                            $hand = '';
+                        }
+
                         $opponent = $game->teams->away->team->name;
 
                         if ($opponent == $team) {
@@ -70,6 +76,7 @@ class BaseballCommand extends Command
                             'foreign_id' => $foreign_id,
                             'foreign_team_id' => $foreign_team_id,
                             'name' => $name,
+                            'hand' => $hand,
                             'team' => $team,
                             'opponent' => $opponent,
                             'time' => $time,
