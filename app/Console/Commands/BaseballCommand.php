@@ -45,7 +45,8 @@ class BaseballCommand extends Command
                         if (isset($player->batSide->code)) {
                             $hand = $player->batSide->code;
                         } else {
-                            $hand = '';
+                            $pitcher = Http::get($url . $player->link);
+                            $hand = $pitcher->object()->people[0]->pitchHand->code;
                         }
 
                         $opponent = $game->teams->away->team->name;
