@@ -11,6 +11,7 @@ class Baseball extends Model
     protected $table = 'baseball';
 
     protected $casts = [
+        'opponent' => 'array',
         'splits' => 'array',
     ];
 

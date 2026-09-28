@@ -49,9 +49,11 @@ class BaseballCommand extends Command
                             $hand = $pitcher->object()->people[0]->pitchHand->code;
                         }
 
-                        $opponent = $game->teams->away->team->name;
+                        $opponent = [
+                            'team' => $game->teams->away->team->name,
+                        ];
 
-                        if ($opponent == $team) {
+                        if ($opponent['team'] == $team) {
                             $opponent = $game->teams->home->team->name;
                         }
 
