@@ -26,17 +26,27 @@
                 <a href="/soccer" class="@if(request()->is('soccer')) bg-blue-600 text-white shadow-lg @else text-slate-400 hover:text-white hover:bg-slate-700/50 @endif flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold uppercase tracking-tight transition">
                     <span>⚽</span>
                     <span>Fútbol</span>
-                </a href="">
+                </a>
                 
                 <a href="/basketball" class="@if(request()->is('basketball')) bg-blue-600 text-white shadow-lg @else text-slate-400 hover:text-white hover:bg-slate-700/50 @endif flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold uppercase tracking-tight transition">
                     <span>🏀</span>
                     <span>Baloncesto</span>
-                </a href="">
+                </a>
                 
                 <a href="baseball" class="@if(request()->is('baseball')) bg-blue-600 text-white shadow-lg @else text-slate-400 hover:text-white hover:bg-slate-700/50 @endif flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold uppercase tracking-tight transition">
                     <span>⚾</span>
                     <span>Béisbol</span>
-                </a href="">
+                </a>
+
+                <a href="football" class="@if(request()->is('football')) bg-blue-600 text-white shadow-lg @else text-slate-400 hover:text-white hover:bg-slate-700/50 @endif flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold uppercase tracking-tight transition">
+                    <span>🏈</span>
+                    <span>Fútbol Americano</span>
+                </a>
+
+                <a href="hockey" class="@if(request()->is('hockey')) bg-blue-600 text-white shadow-lg @else text-slate-400 hover:text-white hover:bg-slate-700/50 @endif flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold uppercase tracking-tight transition">
+                    <span>🏒</span>
+                    <span>Hockey</span>
+                </a>
             </div>
         </div>
 
