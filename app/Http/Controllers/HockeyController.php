@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hockey;
 use Illuminate\Http\Request;
 
 class HockeyController extends Controller
@@ -11,6 +12,7 @@ class HockeyController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('hockey.index');
+        $games = Hockey::whereDate('created_at', now()->format('Y-m-d'))->get();
+        return view('hockey.index', compact('games'));
     }
 }
