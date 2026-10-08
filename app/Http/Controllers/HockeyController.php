@@ -13,6 +13,10 @@ class HockeyController extends Controller
     public function __invoke(Request $request)
     {
         $games = Hockey::whereDate('created_at', now()->format('Y-m-d'))->get();
-        return view('hockey.index', compact('games'));
+
+        $teams = Hockey::get()->pluck('home')->toArray();
+        $teams = array_unique($teams);
+
+        return view('hockey.index', compact('games', 'teams'));
     }
 }

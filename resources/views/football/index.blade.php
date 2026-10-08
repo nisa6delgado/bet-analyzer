@@ -90,7 +90,7 @@
         </thead>
 
         <tbody class="divide-y divide-slate-700/50">
-            @foreach($players as $player)
+            @foreach($games as $player)
                 <tr class="hover:bg-slate-700/30 transition-all group">
                     <td class="px-6 py-6">
                         <a target="_blank" href="https://mlb.com/gameday/{{ $player->game_id }}">
