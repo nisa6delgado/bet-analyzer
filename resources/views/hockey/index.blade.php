@@ -9,55 +9,20 @@
                 <form>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                         <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Equipo</label>
+                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Liga</label>
 
-                            <select name="team" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                                <option value="">Todos</option>
+                            <select name="league" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                                <option value="">Todas</option>
 
-                                @foreach($teams as $team)
-                                    <option {{ $team == request()->team ? 'selected' : '' }} value="{{ $team }}">{{ $team }}</option>
+                                @foreach($leagues as $league)
+                                    <option {{ $league == request()->league ? 'selected' : '' }} value="{{ $league }}">{{ $league }}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Bases</label>
-                            <input value="{{ request()->bases }}" name="bases" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Innings</label>
-                            <input value="{{ request()->ip }}" name="ip" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Ponches</label>
-                            <input value="{{ request()->k }}" name="k" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Boletos</label>
-                            <input value="{{ request()->bb }}" name="bb" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                        </div>
-                        
-                        <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Carreras</label>
-                            <input value="{{ request()->r }}" name="r" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Impulsadas</label>
-                            <input value="{{ request()->rbi }}" name="rbi" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Hits</label>
-                            <input value="{{ request()->h }}" name="h" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Jonrones</label>
-                            <input value="{{ request()->hr }}" name="hr" type="text" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
+                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Fecha</label>
+                            <input value="{{ request()->date }}" min="{{ now()->format('Y-m-d') }}" name="date" type="date" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
                         </div>
 
                         <div class="flex flex-col gap-2">
@@ -75,141 +40,77 @@
             </div>
         </div>
     </div>
-
+    
     <table class="w-full text-left min-w-[950px]">
         <thead>
             <tr class="border-b border-slate-700 bg-slate-800/50">
-                <th class="px-6 py-5 text-[11px] font-bold uppercase text-slate-500 tracking-widest">Horario / Rival</th>
-                <th class="px-6 py-5 text-[11px] font-bold uppercase text-slate-500 tracking-widest">Jugador</th>
-                <th class="px-6 py-5 text-[11px] font-bold uppercase text-slate-500 tracking-widest text-right" colspan="5">
-                    @if(isset($players[0]))
-                        Última actualización: {{ $players[0]->created_at->format('d/m/Y h:i A') }}
-                    @endif
-                </th>
+                <th class="px-6 py-5 text-[11px] font-bold uppercase text-slate-500 tracking-widest">Horario / Liga</th>
+                <th class="px-6 py-5 text-[11px] font-bold uppercase text-slate-500 tracking-widest">Enfrentamiento</th>
+                <th class="px-6 py-5 text-[11px] font-bold uppercase text-slate-500 tracking-widest text-center"></th>
             </tr>
         </thead>
 
         <tbody class="divide-y divide-slate-700/50">
-            @foreach($players as $player)
-                <tr class="hover:bg-slate-700/30 transition-all group">
+            @foreach($matches as $match)
+                <tr id="match-{{ $match->foreign_id }}" class="hover:bg-slate-700/30 transition-all group">
                     <td class="px-6 py-6">
-                        <a target="_blank" href="https://mlb.com/gameday/{{ $player->game_id }}">
-                            <div class="flex flex-col">
-                                <span class="text-xl font-bold text-white">{{ $player->time }}</span>
-                                <span class="text-[10px] text-blue-400 font-bold uppercase mt-1">vs {{ $player->opponent['team'] }}</span>
-                            </div>
-                        </a>
+                        <div class="flex flex-col">
+                            <span class="font-mono text-xl font-bold text-white">
+                                @if(new DateTime($match->date)->format('Y-m-d') != new DateTime()->format('Y-m-d'))
+                                    {{ new DateTime($match->date)->format('d/m/Y') }}
+                                @endif
+
+                                {{ new DateTime($match->date)->format('h:ia') }}
+                            </span>
+
+                            <span class="flex text-[10px] text-blue-400 font-bold uppercase mt-1">
+                                <img class="h-3 mr-1" src="{{ $match->league->flag ?? $match->league->logo }}" alt="{{ $match->league->name }}">
+
+                                {{ $match->league->name }}
+                            </span>
+                        </div>
                     </td>
                     
                     <td class="px-6 py-6">
                         <div class="flex items-center gap-4">
-                            <div class="flex">
-                                <img
-                                    class="p-1 w-11 bg-white transition-transform"
-                                    src="https://www.mlbstatic.com/team-logos/apple-touch-icons-180x180/{{ $player->foreign_team_id }}.png"
-                                    alt="{{ $player->team }}"
-                                >
-
-                                <img
-                                    class="w-11 bg-slate-900"
-                                    src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/{{ $player->foreign_id }}/headshot/67/current"
-                                    alt="{{ $player->name }}"
-                                >
+                            <div class="flex -space-x-3">
+                                <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="{{ $match->teams->home->logo }}" alt="{{ $match->teams->home->name }}">
+                                <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="{{ $match->teams->away->logo }}" alt="{{ $match->teams->away->name }}">
                             </div>
 
                             <div>
-                                <div class="font-bold text-white text-lg leading-tight">
-                                    <a href="https://mlb.com/player/{{ $player->foreign_id }}" target="_blank">
-                                        {{ $player->name }} ({{ $player->hand }})
-                                    </a>
-                                </div>
-
-                                <div class="text-xs text-slate-500 font-medium">{{ $player->team }}</div>
+                                <div class="font-bold text-white text-lg leading-tight">{{ $match->teams->home->name }} vs {{ $match->teams->away->name }}</div>
                             </div>
                         </div>
                     </td>
+                    
+                    <td class="px-6 py-6 text-center">
+                        @if($match->results)
+                            <div class="flex">
+                                <div class="text-center mx-4">
+                                    <div class="font-black">BTTS</div>
 
-                    @if(isset($player->splits[0]['stat']['era']))
-                        <td class="px-6 py-6 text-center">
-                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/outs-recorded">
-                                <div class="font-black">IP</div>
+                                    {!! goals($match->results, 'btts') !!}
+                                </div>
 
-                                {!! prop($player->splits, 'ip') !!}
+                                <div class="text-center mx-4">
+                                    <div class="font-black">OVER 1.5</div>
+
+                                    {!! goals($match->results, '1.5') !!}
+                                </div>
+
+                                <div class="text-center mx-4">
+                                    <div class="font-black">OVER 2.5</div>
+
+                                    {!! goals($match->results, '2.5') !!}
+                                </div>
+                            </div>
+                        @else
+                            <a href="/soccer/{{ $match->foreign_id }}" class="cursor-pointer inline-block bg-blue-500/10 text-blue-400 border border-blue-500/30 px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-tighter">
+                                Ver datos
                             </a>
-                        </td>
-
-                        <td class="px-6 py-6 text-center">
-                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/earned-runs-allowed">
-                                <div class="font-black">ER</div>
-
-                                {!! prop($player->splits, 'r') !!}
-                            </a>
-                        </td>
-                        
-                        <td class="px-6 py-6 text-center">
-                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/hits-allowed">
-                                <div class="font-black">H</div>
-
-                                {!! prop($player->splits, 'h') !!}
-                            </a>
-                        </td>
-
-                        <td class="px-6 py-6 text-center">
-                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/strikeouts">
-                                <div class="font-black">K</div>
-
-                                {!! prop($player->splits, 'k') !!}
-                            </a>
-                        </td>
-
-                        <td class="px-6 py-6 text-center">
-                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/walks-allowed">
-                                <div class="font-black">BB</div>
-
-                                {!! prop($player->splits, 'bb') !!}
-                            </a>
-                        </td>
-                    @else
-                        <td class="px-6 py-6 text-center">
-                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/total-bases">
-                                <div class="font-black">TB</div>
-
-                                {!! prop($player->splits, 'bases') !!}
-                            </a>
-                        </td>
-
-                        <td class="px-6 py-6 text-center">
-                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/runs">
-                                <div class="font-black">R</div>
-                                
-                                {!! prop($player->splits, 'runs') !!}
-                            </a>
-                        </td>
-
-                        <td class="px-6 py-6 text-center">
-                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/rbi">
-                                <div class="font-black">RBI</div>
-                                
-                                {!! prop($player->splits, 'rbi') !!}
-                            </a>
-                        </td>
-
-                        <td class="px-6 py-6 text-center">
-                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/homeruns">
-                                <div class="font-black">HR</div>
-                                
-                                {!! prop($player->splits, 'hr') !!}
-                            </a>
-                        </td>
-
-                        <td class="px-6 py-6 text-center">
-                            <a target="_blank" href="https://www.bettingpros.com/mlb/props/{{ str()->slug($player->name) }}/hits">
-                                <div class="font-black">H</div>
-                                
-                                {!! prop($player->splits, 'h') !!}
-                            </a>
-                        </td>
-                    @endif
+                        @endif
+                    </td>
                 </tr>
             @endforeach
         </tbody>
