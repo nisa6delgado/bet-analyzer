@@ -12,11 +12,11 @@ class FootballController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $games = Football::whereDate('created_at', now()->format('Y-m-d'))->get();
+        $matches = Football::whereDate('created_at', now()->format('Y-m-d'))->get();
 
         $teams = Football::get()->pluck('home')->toArray();
         $teams = array_unique($teams);
 
-        return view('football.index', compact('games', 'teams'));
+        return view('football.index', compact('matches', 'teams'));
     }
 }

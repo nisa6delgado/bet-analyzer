@@ -67,6 +67,41 @@ function goals($data, $market)
     return $result;
 }
 
+function hockey_logo($team)
+{
+    switch ($team) {
+        case 'Bruins':
+            $code = 'BOS';
+            break;
+
+        case 'Sabres':
+            $code = 'BUF';
+            break;
+
+        case 'Red Wings':
+            $code = 'DET';
+            break;
+
+        case 'Panthers':
+            $code = 'FLA';
+            break;
+
+        case 'Canadiens':
+            $code = 'MTL';
+            break;
+
+        case 'Lightning':
+            $code = 'TBL';
+            break;
+
+        case 'Maple Leafs':
+            $code = 'TOR';
+            break;
+    }
+
+    return 'https://assets.nhle.com/logos/nhl/svg/' . $code . '_light.svg';
+}
+
 function prop($splits, $prop)
 {
     $propT = 0;

@@ -9,18 +9,6 @@
                 <form>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                         <div class="flex flex-col gap-2">
-                            <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Liga</label>
-
-                            <select name="league" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
-                                <option value="">Todas</option>
-
-                                @foreach($leagues as $league)
-                                    <option {{ $league == request()->league ? 'selected' : '' }} value="{{ $league }}">{{ $league }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="flex flex-col gap-2">
                             <label class="ml-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest">Fecha</label>
                             <input value="{{ request()->date }}" min="{{ now()->format('Y-m-d') }}" name="date" type="date" class="bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none transition-all">
                         </div>
@@ -62,24 +50,18 @@
 
                                 {{ new DateTime($match->date)->format('h:ia') }}
                             </span>
-
-                            <span class="flex text-[10px] text-blue-400 font-bold uppercase mt-1">
-                                <img class="h-3 mr-1" src="{{ $match->league->flag ?? $match->league->logo }}" alt="{{ $match->league->name }}">
-
-                                {{ $match->league->name }}
-                            </span>
                         </div>
                     </td>
                     
                     <td class="px-6 py-6">
                         <div class="flex items-center gap-4">
                             <div class="flex -space-x-3">
-                                <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="{{ $match->teams->home->logo }}" alt="{{ $match->teams->home->name }}">
-                                <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="{{ $match->teams->away->logo }}" alt="{{ $match->teams->away->name }}">
+                                <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="{{ $match->home }}" alt="{{ $match->home }}">
+                                <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="{{ $match->teams->away->logo ?? '' }}" alt="{{ $match->teams->away->name ?? '' }}">
                             </div>
 
                             <div>
-                                <div class="font-bold text-white text-lg leading-tight">{{ $match->teams->home->name }} vs {{ $match->teams->away->name }}</div>
+                                <div class="font-bold text-white text-lg leading-tight">{{ $match->teams->home->name ?? '' }} vs {{ $match->teams->away->name ?? '' }}</div>
                             </div>
                         </div>
                     </td>
