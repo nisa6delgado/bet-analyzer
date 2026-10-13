@@ -52,12 +52,12 @@
                     <td class="px-6 py-6">
                         <div class="flex items-center gap-4">
                             <div class="flex -space-x-3">
-                                <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="{{ $match->home }}" alt="{{ $match->home }}">
-                                <img class="w-11 h-11 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:scale-110 transition-transform" src="{{ $match->away }}" alt="{{ $match->away }}">
+                                <img class="w-30 h-30" src="{{ hockey_logo($match->home) }}" alt="{{ $match->home }}">
+                                <img class="w-30 h-30" src="{{ hockey_logo($match->away) }}" alt="{{ $match->away }}">
                             </div>
 
                             <div>
-                                <div class="font-bold text-white text-lg leading-tight">{{ $match->teams->home->name ?? '' }} vs {{ $match->teams->away->name ?? '' }}</div>
+                                <div class="font-bold text-white text-lg leading-tight">{{ $match->home }} vs {{ $match->away }}</div>
                             </div>
                         </div>
                     </td>

@@ -69,25 +69,39 @@ function goals($data, $market)
 
 function hockey_logo($team)
 {
+    $code = '';
+    
     switch ($team) {
         case 'Bruins':
             $code = 'BOS';
             break;
 
-        case 'Sabres':
-            $code = 'BUF';
-            break;
-
-        case 'Red Wings':
-            $code = 'DET';
-            break;
-
-        case 'Panthers':
-            $code = 'FLA';
+        case 'Blue Jackets':
+            $code = 'CBJ';
             break;
 
         case 'Canadiens':
             $code = 'MTL';
+            break;
+
+        case 'Capitals':
+            $code = 'WSH';
+            break;
+
+        case 'Devils':
+            $code = 'NJD';
+            break;
+
+        case 'Flyers':
+            $code = 'PHI';
+            break;
+
+        case 'Hurricanes':
+            $code = 'CAR';
+            break;
+
+        case 'Islanders':
+            $code = 'NYI';
             break;
 
         case 'Lightning':
@@ -96,6 +110,26 @@ function hockey_logo($team)
 
         case 'Maple Leafs':
             $code = 'TOR';
+            break;
+
+        case 'Panthers':
+            $code = 'FLA';
+            break;
+
+        case 'Penguins':
+            $code = 'PIT';
+            break;
+
+        case 'Rangers':
+            $code = 'NYR';
+            break;
+
+        case 'Red Wings':
+            $code = 'DET';
+            break;
+
+        case 'Sabres':
+            $code = 'BUF';
             break;
     }
 
