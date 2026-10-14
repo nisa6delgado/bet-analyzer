@@ -72,8 +72,20 @@ function hockey_logo($team)
     $code = '';
     
     switch ($team) {
+        case 'Avalanche':
+            $code = 'COL';
+            break;
+
         case 'Bruins':
             $code = 'BOS';
+            break;
+
+        case 'Blackhawks':
+            $code = 'CHI';
+            break;
+
+        case 'Blues':
+            $code = 'STL';
             break;
 
         case 'Blue Jackets':
@@ -104,8 +116,16 @@ function hockey_logo($team)
             $code = 'NYI';
             break;
 
+        case 'Jets':
+            $code = 'WPG';
+            break;
+
         case 'Lightning':
             $code = 'TBL';
+            break;
+
+        case 'Mammoth':
+            $code = 'UTA';
             break;
 
         case 'Maple Leafs':
@@ -120,6 +140,10 @@ function hockey_logo($team)
             $code = 'PIT';
             break;
 
+        case 'Predators':
+            $code = 'NSH';
+            break;
+
         case 'Rangers':
             $code = 'NYR';
             break;
@@ -130,6 +154,14 @@ function hockey_logo($team)
 
         case 'Sabres':
             $code = 'BUF';
+            break;
+
+        case 'Stars':
+            $code = 'DAL';
+            break;
+
+        case 'Wild':
+            $code = 'MIN';
             break;
     }
 
