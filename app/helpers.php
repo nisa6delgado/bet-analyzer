@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Hockey;
+
 function goals($data, $market)
 {
     $total_home = 0;
@@ -96,6 +98,10 @@ function hockey_logo($team)
             $code = 'MTL';
             break;
 
+        case 'Canucks':
+            $code = 'VAN';
+            break;
+
         case 'Capitals':
             $code = 'WSH';
             break;
@@ -104,8 +110,20 @@ function hockey_logo($team)
             $code = 'NJD';
             break;
 
+        case 'Ducks':
+            $code = 'ANA';
+            break;
+
+        case 'Flames':
+            $code = 'CGY';
+            break;
+
         case 'Flyers':
             $code = 'PHI';
+            break;
+
+        case 'Golden Knights':
+            $code = 'VGK';
             break;
 
         case 'Hurricanes':
@@ -120,6 +138,14 @@ function hockey_logo($team)
             $code = 'WPG';
             break;
 
+        case 'Kings':
+            $code = 'LAK';
+            break;
+
+        case 'Kraken':
+            $code = 'SEA';
+            break;
+
         case 'Lightning':
             $code = 'TBL';
             break;
@@ -130,6 +156,10 @@ function hockey_logo($team)
 
         case 'Maple Leafs':
             $code = 'TOR';
+            break;
+
+        case 'Oilers':
+            $code = 'EDM';
             break;
 
         case 'Panthers':
@@ -156,6 +186,10 @@ function hockey_logo($team)
             $code = 'BUF';
             break;
 
+        case 'Sharks':
+            $code = 'SJS';
+            break;
+
         case 'Stars':
             $code = 'DAL';
             break;
@@ -166,6 +200,30 @@ function hockey_logo($team)
     }
 
     return 'https://assets.nhle.com/logos/nhl/svg/' . $code . '_light.svg';
+}
+
+function hockey_over($team)
+{
+    $games = Hockey::where('home', $team->home)
+        ->orWhere('away', $team->home)
+        ->get();
+
+    $total = 0;
+    $over = 0;
+
+    foreach ($games as $game) {
+        if ($game->result) {
+            $result = explode('-', $game->result);
+
+            $total += 1;
+
+            if ($result[0] + $result[1] > 5) {
+                $over += 1;
+            }
+        }
+    }
+
+    return $over . ' de ' . $total;
 }
 
 function prop($splits, $prop)
