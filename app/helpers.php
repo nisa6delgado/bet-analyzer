@@ -204,26 +204,75 @@ function hockey_logo($team)
 
 function hockey_over($team)
 {
-    $games = Hockey::where('home', $team->home)
-        ->orWhere('away', $team->home)
-        ->get();
-
-    $total = 0;
     $over = 0;
 
+    $games = Hockey::where(function ($query) use ($team) {
+            $query->where('home', $team->home)
+                ->orWhere('away', $team->home);
+        })
+        ->where('result', '!=', '')
+        ->limit(5)
+        ->orderByDesc('id')
+        ->get();
+        
     foreach ($games as $game) {
-        if ($game->result) {
-            $result = explode('-', $game->result);
+        $result = explode('-', $game->result);
 
-            $total += 1;
+        $home = $result[0];
+        $away = $result[1];
 
-            if ($result[0] + $result[1] > 5) {
-                $over += 1;
-            }
+        if ($home + $away > 5) {
+            $over += 1;
         }
     }
 
-    return $over . ' de ' . $total;
+    $games = Hockey::where(function ($query) use ($team) {
+            $query->where('home', $team->away)
+                ->orWhere('away', $team->away);
+        })
+        ->where('result', '!=', '')
+        ->limit(5)
+        ->orderByDesc('id')
+        ->get();
+
+    foreach ($games as $game) {
+        $result = explode('-', $game->result);
+
+        $home = $result[0];
+        $away = $result[1];
+
+        if ($home + $away > 5) {
+            $over += 1;
+        }
+    }
+
+    $games = Hockey::where(function ($query) use ($team) {
+            $query->where(function ($q) use ($team) {
+                $q->where('home', $team->home)
+                  ->where('away', $team->away);
+
+            })->orWhere(function ($q) use ($team) {
+                $q->where('home', $team->away)
+                  ->where('away', $team->home);
+            });
+        })
+        ->where('result', '!=', '')
+        ->limit(5)
+        ->orderByDesc('id')
+        ->get();
+
+    foreach ($games as $game) {
+        $result = explode('-', $game->result);
+
+        $home = $result[0];
+        $away = $result[1];
+
+        if ($home + $away > 5) {
+            $over += 1;
+        }
+    }
+
+    return $over . ' de 15';
 }
 
 function prop($splits, $prop)
